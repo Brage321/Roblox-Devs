@@ -5,67 +5,84 @@
     <style>
         body {
             margin: 0;
-            background: black;
-            color: white;
-            font-family: Arial;
+            background: linear-gradient(135deg, #232526 0%, #414345 100%);
+            color: #f3f3f3;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            image-rendering: pixelated;
+            min-height: 100vh;
         }
 
         nav {
-            background: #222;
-            padding: 10px 20px;
+            background: rgba(34,34,34,0.98);
+            padding: 18px 32px;
             display: flex;
             justify-content: flex-start;
-            gap: 15px;
+            gap: 18px;
             position: sticky;
             top: 0;
-            z-index: 10;
+            z-index: 20;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.18);
         }
 
         nav a {
-            color: white;
+            color: #FFD700;
             text-decoration: none;
-            font-weight: bold;
-            padding: 5px 10px;
-            background: #444;
-            border-radius: 5px;
-            transition: background 0.2s;
+            font-weight: 600;
+            padding: 8px 18px;
+            background: linear-gradient(90deg, #444 0%, #222 100%);
+            border-radius: 7px;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+            font-size: 1.08rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
         nav a:hover {
-            background: #666;
+            background: linear-gradient(90deg, #FFD700 0%, #FFA500 100%);
+            color: #222;
+            box-shadow: 0 4px 16px rgba(255,215,0,0.15);
         }
 
         .page-section {
             display: none;
-            padding: 40px 20px;
+            padding: 48px 24px 32px 24px;
+            max-width: 900px;
+            margin: 40px auto 0 auto;
+            background: rgba(40,40,40,0.93);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+            position: relative;
+            min-height: 320px;
         }
 
         .video-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
+            gap: 32px;
         }
 
         .video-card {
             position: relative;
-            width: 300px;
-            height: 180px;
-            background: #555;
-            border-radius: 10px;
+            width: 320px;
+            height: 190px;
+            background: linear-gradient(135deg, #555 0%, #222 100%);
+            border-radius: 14px;
             overflow: hidden;
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: transform 0.22s, box-shadow 0.22s;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.18);
         }
 
         .video-card:hover {
-            transform: scale(1.05);
+            transform: scale(1.045);
+            box-shadow: 0 8px 32px rgba(255,215,0,0.12);
         }
 
         .video-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            filter: brightness(0.92) contrast(1.08);
         }
 
         .video-label {
@@ -73,11 +90,107 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background: rgba(0,0,0,0.6);
-            color: white;
+            background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(40,40,40,0.7) 100%);
+            color: #FFD700;
             text-align: center;
-            padding: 5px 0;
+            padding: 7px 0;
             font-weight: bold;
+            font-size: 1.08rem;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px #222;
+        }
+        .video-label.gold-label {
+            color: #FFD700 !important;
+            text-shadow: 0 2px 8px #222, 0 0 8px #FFD700;
+        }
+        .premium-banner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(90deg, #FFD700 0%, #FFA500 100%);
+            color: #222;
+            font-weight: bold;
+            padding: 10px 28px;
+            border-radius: 14px;
+            font-size: 1.15rem;
+            z-index: 2;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.22);
+            cursor: pointer;
+            transition: opacity 0.5s;
+            text-align: center;
+            letter-spacing: 1px;
+            border: 2px solid #fffbe6;
+            pointer-events: auto;
+        }
+        .premium-banner.faded {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .needs-premium-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.92);
+            color: #FFD700;
+            font-weight: bold;
+            padding: 12px 32px;
+            border-radius: 14px;
+            font-size: 1.18rem;
+            z-index: 3;
+            text-align: center;
+            letter-spacing: 1px;
+            border: 2px solid #FFD700;
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+            box-shadow: 0 2px 12px #FFD70044;
+        }
+        .needs-premium-label.visible {
+            opacity: 1;
+        }
+        .video-card.premium-disabled {
+            pointer-events: none;
+        }
+
+        /* Produced by Adoi Games label */
+        .adoi-label {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            background: linear-gradient(90deg, #FFD700 0%, #FFA500 100%);
+            color: #222;
+            font-weight: bold;
+            padding: 7px 18px;
+            border-radius: 8px;
+            font-size: 1rem;
+            z-index: 30;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+            letter-spacing: 1px;
+            border: 2px solid #fffbe6;
+            opacity: 0.93;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 700px) {
+            .page-section {
+                padding: 24px 4vw 24px 4vw;
+                margin: 24px 0 0 0;
+            }
+            .video-card {
+                width: 98vw;
+                max-width: 340px;
+                height: 180px;
+            }
+            .adoi-label {
+                top: 8px;
+                right: 8px;
+                font-size: 0.95rem;
+                padding: 5px 12px;
+            }
         }
     </style>
 </head>
@@ -89,29 +202,41 @@
     <a href="#" id="nav-videos">Videos</a>
     <a href="#" id="nav-about">About</a>
     <a href="#" id="nav-contact">Contact</a>
+    <div class="adoi-label">Produced by Adoi Games</div>
 </nav>
 
 <!-- Sections -->
 <div id="home-section" class="page-section">
-    <h1>✨ Welcome to Roblox Devs!</h1>
-    <p>This is place to learn Roblox Scripting.
-        
-        Founded by @Adoi Games and @imbrage.</p>
+    <div class="adoi-label">Produced by Adoi Games</div>
+    <h1 style="font-size:2.2rem; color:#FFD700; margin-bottom:12px; text-shadow:0 2px 16px #222;">✨ Welcome to Roblox Devs!</h1>
+    <p style="font-size:1.15rem; color:#f3f3f3; margin-bottom:24px;">
+        This is the home section. <br>
+        <span style="color:#FFD700;">Discover tutorials, resources, and more for Roblox developers!</span>
+    </p>
+    <ul style="font-size:1.08rem; color:#eaeaea;">
+        <li>Latest Roblox news and updates</li>
+        <li>Exclusive developer guides</li>
+        <li>Community support and tips</li>
+    </ul>
 </div>
 
 <div id="videos-section" class="page-section">
-    <h1>🎬 Videos</h1>
+    <div class="adoi-label">Produced by Adoi Games</div>
+    <h1 style="font-size:2rem; color:#FFD700; margin-bottom:18px; text-shadow:0 2px 16px #222;">🎬 Videos</h1>
     <div class="video-grid">
         <a href="https://www.youtube.com/@BrageR3210" target="_blank">
             <div class="video-card">
-                <img src="https://imgur.com/ICpknPs" alt="Video 1">
-                <div class="video-label">The Basics</div>
+                <img src="https://imgur.com/ICpknPs.png" alt="Free Video">
+                <div class="video-label">Free Video</div>
             </div>
         </a>
-        <a href="https://www.youtube.com/@BrageR3210" target="_blank">
-            <div class="video-card">
+        <!-- Video 2: Premium, link disabled -->
+        <a href="#" id="premium-video-link">
+            <div class="video-card" id="premium-video-card">
+                <div class="premium-banner" id="premiumBanner">PREMIUM FUTURE</div>
+                <div class="needs-premium-label" id="needsPremiumLabel">Needs Premium</div>
                 <img src="https://via.placeholder.com/300x180.png?text=Thumbnail+2" alt="Video 2">
-                <div class="video-label">Video 2 Name</div>
+                <div class="video-label gold-label">Video 2 Name</div>
             </div>
         </a>
         <a href="https://www.youtube.com/@BrageR3210" target="_blank">
@@ -124,13 +249,30 @@
 </div>
 
 <div id="about-section" class="page-section">
-    <h1>📖 About</h1>
-    <p>We are a team of passionate Roblox developers. Thank @imbrage for making the videos and this site!</p>
+    <div class="adoi-label">Produced by Adoi Games</div>
+    <h1 style="font-size:2rem; color:#FFD700; margin-bottom:18px; text-shadow:0 2px 16px #222;">📖 About</h1>
+    <p style="font-size:1.13rem; color:#f3f3f3;">
+        We are a team of Roblox Developers with years of experience! <br>
+        <span style="color:#FFD700;">Our mission is to help you create, learn, and grow in the Roblox universe.</span>
+    </p>
+    <ul style="font-size:1.08rem; color:#eaeaea;">
+        <li>Professional scripting and building</li>
+        <li>Community events and workshops</li>
+        <li>Support for all skill levels</li>
+    </ul>
 </div>
 
 <div id="contact-section" class="page-section">
-    <h1>📬 Contact</h1>
-    <p>Discord: @imbrage</p>
+    <div class="adoi-label">Produced by Adoi Games</div>
+    <h1 style="font-size:2rem; color:#FFD700; margin-bottom:18px; text-shadow:0 2px 16px #222;">📬 Contact</h1>
+    <p style="font-size:1.13rem; color:#f3f3f3;">
+        Reach out to us at <a href="mailto:robloxdevs@example.com" style="color:#FFD700;text-decoration:underline;">robloxdevs@example.com</a>
+    </p>
+    <ul style="font-size:1.08rem; color:#eaeaea;">
+        <li>Business inquiries</li>
+        <li>Collaboration requests</li>
+        <li>General questions</li>
+    </ul>
 </div>
 
 <script>
@@ -158,6 +300,23 @@
     // Show Home by default
     hideAllSections();
     document.getElementById('home-section').style.display = 'block';
+
+    // Premium label fade logic
+    const premiumBanner = document.getElementById('premiumBanner');
+    const needsPremiumLabel = document.getElementById('needsPremiumLabel');
+    const premiumVideoCard = document.getElementById('premium-video-card');
+    const premiumVideoLink = document.getElementById('premium-video-link');
+
+    premiumBanner.addEventListener('click', function(e) {
+        e.preventDefault();
+        premiumBanner.classList.add('faded');
+        needsPremiumLabel.classList.add('visible');
+        premiumVideoCard.classList.add('premium-disabled');
+        premiumVideoLink.removeAttribute('href');
+        setTimeout(() => {
+            needsPremiumLabel.classList.remove('visible');
+        }, 5000); // Fade out after 5 seconds
+    });
 </script>
 
 </body>
