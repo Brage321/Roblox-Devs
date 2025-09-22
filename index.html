@@ -78,11 +78,12 @@
             box-shadow: 0 8px 32px rgba(255,215,0,0.12);
         }
 
-        .video-card img {
+        .video-card img, .video-card video {
             width: 100%;
             height: 100%;
             object-fit: cover;
             filter: brightness(0.92) contrast(1.08);
+            display: block;
         }
 
         .video-label {
@@ -224,27 +225,32 @@
     <div class="adoi-label">Produced by Adoi Games</div>
     <h1 style="font-size:2rem; color:#FFD700; margin-bottom:18px; text-shadow:0 2px 16px #222;">🎬 Videos</h1>
     <div class="video-grid">
-        <a href="https://www.youtube.com/@BrageR3210" target="_blank">
-            <div class="video-card">
-                <img src="https://imgur.com/ICpknPs.png" alt="Free Video">
-                <div class="video-label">Free Video</div>
-            </div>
-        </a>
+        <!-- Video 1: Free Video -->
+        <div class="video-card">
+            <video width="100%" height="100%" controls poster="https://imgur.com/ICpknPs.png">
+                <source src="your-video-1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-label">Free Video</div>
+        </div>
         <!-- Video 2: Premium, link disabled -->
-        <a href="#" id="premium-video-link">
-            <div class="video-card" id="premium-video-card">
-                <div class="premium-banner" id="premiumBanner">PREMIUM FUTURE</div>
-                <div class="needs-premium-label" id="needsPremiumLabel">Needs Premium</div>
-                <img src="https://via.placeholder.com/300x180.png?text=Thumbnail+2" alt="Video 2">
-                <div class="video-label gold-label">Video 2 Name</div>
-            </div>
-        </a>
-        <a href="https://www.youtube.com/@BrageR3210" target="_blank">
-            <div class="video-card">
-                <img src="https://via.placeholder.com/300x180.png?text=Thumbnail+3" alt="Video 3">
-                <div class="video-label">Video 3 Name</div>
-            </div>
-        </a>
+        <div class="video-card" id="premium-video-card">
+            <div class="premium-banner" id="premiumBanner">PREMIUM FUTURE</div>
+            <div class="needs-premium-label" id="needsPremiumLabel">Needs Premium</div>
+            <video width="100%" height="100%" controls poster="https://via.placeholder.com/300x180.png?text=Thumbnail+2">
+                <source src="your-video-2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-label gold-label">Video 2 Name</div>
+        </div>
+        <!-- Video 3 -->
+        <div class="video-card">
+            <video width="100%" height="100%" controls poster="https://via.placeholder.com/300x180.png?text=Thumbnail+3">
+                <source src="tutorial-3.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-label">Video 3</Video></div>
+        </div>
     </div>
 </div>
 
@@ -266,7 +272,7 @@
     <div class="adoi-label">Produced by Adoi Games</div>
     <h1 style="font-size:2rem; color:#FFD700; margin-bottom:18px; text-shadow:0 2px 16px #222;">📬 Contact</h1>
     <p style="font-size:1.13rem; color:#f3f3f3;">
-        Reach out to us at <a href="mailto:@imbrage on Discord!" style="color:#FFD700;text-decoration:underline;">robloxdevs@example.com</a>
+        Reach out to us at <a href="mailto:Discord" style="color:#FFD700;text-decoration:underline;">Discord (@imbrage )</a>
     </p>
     <ul style="font-size:1.08rem; color:#eaeaea;">
         <li>Business inquiries</li>
@@ -305,14 +311,12 @@
     const premiumBanner = document.getElementById('premiumBanner');
     const needsPremiumLabel = document.getElementById('needsPremiumLabel');
     const premiumVideoCard = document.getElementById('premium-video-card');
-    const premiumVideoLink = document.getElementById('premium-video-link');
 
     premiumBanner.addEventListener('click', function(e) {
         e.preventDefault();
         premiumBanner.classList.add('faded');
         needsPremiumLabel.classList.add('visible');
         premiumVideoCard.classList.add('premium-disabled');
-        premiumVideoLink.removeAttribute('href');
         setTimeout(() => {
             needsPremiumLabel.classList.remove('visible');
         }, 5000); // Fade out after 5 seconds
@@ -321,4 +325,3 @@
 
 </body>
 </html>
-
