@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Roblox Devs</title>
+    <style>
+        body { 
+            margin: 0;
+            background: black; 
+            color: white; 
+            font-family: Arial; 
+        }
+
+        #coming-soon, #main-content {
+            display: none; /* hide both sections by default */
+        }
+
+        /* Navbar */
+        nav {
+            background: #222;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: flex-start;
+            gap: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            background: #444;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+
+        nav a:hover {
+            background: #666;
+        }
+
+        /* Video grid */
+        .video-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px 20px;
+        }
+
+        /* Video card */
+        .video-card {
+            position: relative;
+            width: 300px;
+            height: 180px;
+            background: #555;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .video-card:hover {
+            transform: scale(1.05);
+        }
+
+        .video-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Overlay label */
+        .video-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            text-align: center;
+            padding: 5px 0;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Coming Soon Section -->
+<div id="coming-soon" style="text-align:center; padding-top:100px;">
+    <h1>✨ Roblox Devs is coming soon!</h1>
+</div>
+
+<!-- Main Content Section -->
+<div id="main-content">
+
+    <!-- Navbar -->
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Videos</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <!-- Video Grid -->
+    <div class="video-grid">
+        <!-- Example Video Card -->
+        <a href="https://www.youtube.com/@BrageR3210" target="_blank">
+            <div class="video-card">
+                <img src="https://imgur.com/ICpknPs" alt="Video 1">
+                <div class="video-label">The Basics</div>
+            </div>
+        </a>
+
+        <a href="https://www.youtube.com/@BrageR3210" target="_blank">
+            <div class="video-card">
+                <img src="https://via.placeholder.com/300x180.png?text=Thumbnail+2" alt="Video 2">
+                <div class="video-label">Video 2 Name</div>
+            </div>
+        </a>
+
+        <a href="https://www.youtube.com/@BrageR3210" target="_blank">
+            <div class="video-card">
+                <img src="https://via.placeholder.com/300x180.png?text=Thumbnail+3" alt="Video 3">
+                <div class="video-label">Video 3 Name</div>
+            </div>
+        </a>
+        <!-- Add more video cards here -->
+    </div>
+
+</div>
+
+<script>
+    // Toggle this variable: true = show Coming Soon, false = show main content
+    const COMING_SOON = false;
+
+    if (COMING_SOON) {
+        document.getElementById('coming-soon').style.display = 'block';
+    } else {
+        document.getElementById('main-content').style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
+
+
+
+
