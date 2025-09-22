@@ -3,10 +3,43 @@
 <head>
     <title>Roblox Devs</title>
     <style>
-        body { background: black; color: white; text-align: center; font-family: Arial; padding-top: 100px; }
+        body { 
+            background: black; 
+            color: white; 
+            text-align: center; 
+            font-family: Arial; 
+            padding-top: 100px; 
+        }
+        #coming-soon, #main-content {
+            display: none; /* hide both sections by default */
+        }
     </style>
 </head>
 <body>
+
+<!-- Coming Soon Section -->
+<div id="coming-soon">
     <h1>✨ Roblox Devs is coming soon!</h1>
+</div>
+
+<!-- Main Content Section -->
+<div id="main-content">
+    <h1>Welcome to Roblox Devs!</h1>
+    <p>This is the main site content.</p>
+</div>
+
+<script>
+    // Toggle this variable: true = show Coming Soon, false = show main content
+    const COMING_SOON = true;
+
+    if (COMING_SOON) {
+        document.getElementById('coming-soon').style.display = 'block';
+    } else {
+        document.getElementById('main-content').style.display = 'block';
+    }
+</script>
+
 </body>
 </html>
+
+
